@@ -73,7 +73,7 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
         return films == null ? 0 : films.size();
     }
 
-    public static void loadImage(final ImageView imageView, String imageUrl) {
+    private void loadImage(final ImageView imageView, String imageUrl) {
         final RequestOptions requestOptions = new RequestOptions();
         requestOptions.placeholder(R.mipmap.ic_crop_original_black_48dp);
         requestOptions.diskCacheStrategy(DiskCacheStrategy.RESOURCE);
