@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="film"
+            type="com.test.androidtest.service.model.Film" />
+
+
+        <variable
+            name="viewModel"
+            type="com.test.androidtest.viewmodel.FilmViewModel" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_xsmall"
+        android:layout_marginLeft="@dimen/padding_xsmall"
+        android:layout_marginRight="@dimen/padding_xsmall"
+        app:background="?selectableItemBackground"
+        app:cardCornerRadius="@dimen/cardview_default_radius"
+        app:cardElevation="@dimen/cardview_default_elevation">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_film"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/film_image_height"
+                android:scaleType="centerInside"
+                android:src="@mipmap/ic_crop_original_black_48dp" />
+
+            <TextView
+                android:id="@+id/tv_film_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/film_image_height"
+                android:padding="@dimen/padding_small"
+                android:gravity="left|bottom"
+                android:background="@drawable/background"
+                android:text="@{film.title}"
+                android:textAllCaps="false"
+                android:textSize="@dimen/text_size_item_title"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"/>
+        </FrameLayout>
+    </android.support.v7.widget.CardView>
+</layout>
