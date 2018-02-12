@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 class RetrofitBuilder {
 
-    private static final String BASE_URL = "http://www.snagfilms.com/apis/";
+    private static final String BASE_URL = "https://data.cityofnewyork.us/resource/";
 
     private static Retrofit retrofit = null;
 

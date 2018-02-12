@@ -1,16 +1,20 @@
 package com.test.androidtest.service.net;
 
 
-import com.test.androidtest.service.model.Films;
-import com.test.androidtest.service.model.RetrofitResponse;
+import com.test.androidtest.service.model.School;
+import com.test.androidtest.service.model.SchoolMarks;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
 
 public interface DataService {
 
-    @GET("films.json")
-    Call<RetrofitResponse> getFilms(@Query("limit") int limit);
+    @GET("734v-jeq5.json")
+    Call<List<SchoolMarks>> getSchools();
+
+    @GET("97mf-9njv.json")
+    Call<List<School>> getSchoolDetails();
 
 }

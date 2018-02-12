@@ -4,29 +4,29 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 
-import com.test.androidtest.service.model.Film;
-import com.test.androidtest.service.model.Films;
+import com.test.androidtest.service.model.School;
+import com.test.androidtest.service.model.SchoolMarks;
 import com.test.androidtest.service.net.DataRepository;
 
 import java.util.List;
 
 
-public class FilmViewModel extends AndroidViewModel {
+public class SchoolNameViewModel extends AndroidViewModel {
 
-    private LiveData<List<Film>> filmLiveData;
+    private LiveData<List<School>> schoolLiveData;
 
-    public FilmViewModel(final Application application) {
+    public SchoolNameViewModel(final Application application) {
         super(application);
         initNetworkData();
     }
 
     private void initNetworkData() {
         DataRepository dataRepository = DataRepository.instance();
-        filmLiveData = dataRepository.getFilms();
+        schoolLiveData = dataRepository.getDetailsSchools();
     }
 
-    public LiveData<List<Film>> getFilmLiveData() {
-        return filmLiveData;
+    public LiveData<List<School>> getSchoolLiveData() {
+        return schoolLiveData;
     }
 
 }

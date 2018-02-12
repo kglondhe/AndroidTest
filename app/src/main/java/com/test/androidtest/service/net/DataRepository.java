@@ -5,9 +5,8 @@ import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.test.androidtest.service.model.Film;
-import com.test.androidtest.service.model.Films;
-import com.test.androidtest.service.model.RetrofitResponse;
+import com.test.androidtest.service.model.School;
+import com.test.androidtest.service.model.SchoolMarks;
 
 import java.util.List;
 
@@ -23,21 +22,42 @@ public class DataRepository {
         return dataRepository;
     }
 
-    public LiveData<List<Film>> getFilms() {
-        final MutableLiveData<List<Film>> liveData = new MutableLiveData<>();
+    public LiveData<List<SchoolMarks>> getSchools() {
+        final MutableLiveData<List<SchoolMarks>> liveData = new MutableLiveData<>();
         DataService dataService = RetrofitBuilder.getInstance().create(DataService.class);
-        Call<RetrofitResponse> call = dataService.getFilms(10);
-        call.enqueue(new Callback<RetrofitResponse>() {
+        Call<List<SchoolMarks>> call = dataService.getSchools();
+        call.enqueue(new Callback<List<SchoolMarks>>() {
             @Override
-            public void onResponse(@NonNull Call<RetrofitResponse> call, @NonNull Response<RetrofitResponse> response) {
-                Films films = response.body().getFilms();
-                if (films != null) {
-                    liveData.setValue(films.getFilms());
+            public void onResponse(@NonNull Call<List<SchoolMarks>> call, @NonNull Response<List<SchoolMarks>> response) {
+                List<SchoolMarks> list = response.body();
+                if (list != null) {
+                    liveData.setValue(list);
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<RetrofitResponse> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<List<SchoolMarks>> call, @NonNull Throwable t) {
+                Log.e(DataRepository.class.getName(), "Error loading films");
+            }
+        });
+        return liveData;
+    }
+
+    public LiveData<List<School>> getDetailsSchools() {
+        final MutableLiveData<List<School>> liveData = new MutableLiveData<>();
+        DataService dataService = RetrofitBuilder.getInstance().create(DataService.class);
+        Call<List<School>> call = dataService.getSchoolDetails();
+        call.enqueue(new Callback<List<School>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<School>> call, @NonNull Response<List<School>> response) {
+                List<School> list = response.body();
+                if (list != null) {
+                    liveData.setValue(list);
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<School>> call, @NonNull Throwable t) {
                 Log.e(DataRepository.class.getName(), "Error loading films");
             }
         });
